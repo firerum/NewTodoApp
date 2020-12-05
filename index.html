@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="author" content="Ademuyiwa Adewuyi">
+    <meta name="keywords" content="todo app, html, css, JavaScript">
+    <meta name="description" content="A todo app to add and delete your todos">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="banner">
+            <h1>todo</h1>
+            <input type="checkbox" name="" id="dayggler">
+        </header>
+
+        <main>
+            <div class="wrapper">
+                <form id="todo">
+                    <input type="text" name="" id="task" required>
+                    <input type="submit" name="" id="">
+                </form>
+                <ul>
+                    <li draggable="true" id="list">
+                        <input type="checkbox" name="" class="tick">
+                        <span>Read for 1 hour</span>
+                        <button class="task-del"><img src="images/icon-cross.svg" alt="cancel"></button>
+                    </li>
+                </ul>
+                <div class="task-info">
+                    <p></p>
+                    <button class="all">All</button>
+                    <button class="complete">Completed</button>
+                    <button class="clear">clear Completed</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
