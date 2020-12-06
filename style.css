@@ -31,6 +31,10 @@ body {
     color: var(--Light-Grayish-Blue);
 }
 
+p {
+    color: var(--Dark-Grayish-Blue);
+}
+
 button {
     appearance: none;
     -webkit-appearance: none;
@@ -48,6 +52,7 @@ button {
 .banner {
     background-image: url(images/bg-mobile-dark.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     min-height: 200px;
     display: flex;
     justify-content: center;
@@ -59,6 +64,7 @@ button {
     align-items: flex-start;
     height: 200px;
     width: 90%;
+    max-width: 600px;
     padding-top: 2em;
 }
 
@@ -88,6 +94,7 @@ main {
 
 main > .wrapper {
     width: 90%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,8 +171,9 @@ main li > label {
 
 main li > label > input {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
 }
 
@@ -222,8 +230,21 @@ main .task-info > button:focus {
     color: var(--pry-Bright-Blue);
 }
 
-main .were {
+main > .were {
     padding: 4em 0;
-    color: var(--Dark-Grayish-Blue);
     font-size: 15px;
+}
+
+
+/*Media queries*/
+@media only screen and (min-width: 600px) {
+    .banner {
+        background-image: url(images/bg-desktop-dark.jpg);
+    }
+
+    main .task-info > button:first-of-type,
+    main .task-info > button:last-of-type {
+        margin-left: auto;
+    }
+
 }
