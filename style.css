@@ -1,6 +1,6 @@
 :root {
     --pry-Bright-Blue: hsl(220, 98%, 61%);
-    --pry-Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+    --pry-Check-Background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
     --Very-Light-Gray: hsl(0, 0%, 98%);
     --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
@@ -28,22 +28,202 @@
 body {
     font-family: "josefin sans", sans-serif;
     font-size: 18px;
+    color: var(--Light-Grayish-Blue);
 }
 
-
-/*
-input[type="checkbox"] {
-    position: absolute;
-    top: 0;
-    width: 0;
-    height: 0;
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    color: var(--Very-Dark-Grayish-Blue);
+    background-color: transparent;
+    cursor: pointer;
+    font-family: inherit;
 }
-*/
+
 
 
 /*Header Styles*/
 
+.banner {
+    background-image: url(images/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.banner > .banner-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 200px;
+    width: 90%;
+    padding-top: 2em;
+}
+
 .banner h1 {
     text-transform: uppercase;
     letter-spacing: 10px;
+    color: var(--Very-Light-Gray);
+    width: 50%;
+}
+
+.banner > #dayggler {
+    outline: 1px solid #fff;
+    height: 30px;
+}
+
+
+/*Main Styles*/
+
+main {
+    background-color: var(--Very-Dark-Blue);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main > .wrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -150px;
+}
+
+main #todo,
+main ul,
+main .task-info {
+    width: 100%;
+    background-color: var(--Very-Dark-Desaturated-Blue);
+    border-radius: 5px;
+    padding: 1em 1em;
+}
+
+main #todo,
+main ul {
+    margin-bottom: 1.5rem;
+}
+
+main ul {
+    padding: 0;
+}
+
+main #todo {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0.7em;
+}
+
+main #todo > input[type="text"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 70%;
+    background-color: transparent;
+    color: var(--Dark-Grayish-Blue);
+    border: none;
+    font-family: inherit;
+    order: 2;
+}
+
+main #todo > button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin-left: 10px;
+    padding: 0.5em;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid var(--Very-Dark-Grayish-Blue);
+}
+
+main li {
+    padding: 1em;
+    border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+    display: flex;
+    gap: 10px;
+}
+
+main li > span {
+    align-self: flex-end;
+}
+
+main li > button {
+    margin-left: auto;
+}
+
+main li > label {
+    position: relative;
+    width: 30px;
+    cursor: pointer;
+}
+
+main li > label > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+main li > label > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--Very-Dark-Grayish-Blue);
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+main li > label > span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 10px;
+    border: solid var(--Light-Grayish-Blue);
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-width: 0 2px 2px 0;
+    display: none;
+}
+
+main li > label > input:checked + span {
+    background-image: var(--pry-Check-Background);
+}
+
+main li > label > input:checked + span::after {
+    display: block;
+}
+
+main .task-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+main .task-info > button {
+    color: var(--Dark-Grayish-Blue);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 200ms ease;
+}
+
+main .task-info > button:hover {
+    color: var(--Light-Grayish-Blue);
+}
+
+main .task-info > button:focus {
+    color: var(--pry-Bright-Blue);
+}
+
+main .were {
+    padding: 4em 0;
+    color: var(--Dark-Grayish-Blue);
+    font-size: 15px;
 }

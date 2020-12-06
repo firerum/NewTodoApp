@@ -16,20 +16,41 @@
 <body>
     <div class="container">
         <header class="banner">
-            <h1>todo</h1>
-            <input type="checkbox" name="" id="dayggler">
+            <div class="banner-title">
+                <h1>todo</h1>
+                <button id="dayggler"><img src="images/icon-sun.svg" alt=""></button>
+            </div>
         </header>
 
         <main>
             <div class="wrapper">
                 <form id="todo">
-                    <input type="text" name="" id="task" required>
-                    <input type="submit" name="" id="">
+                    <input type="text" name="" id="task" placeholder="create new task" required>
+                    <button type="submit" name="" id="">Add</button>
                 </form>
                 <ul>
-                    <li draggable="true" id="list">
-                        <input type="checkbox" name="" class="tick">
+                    <li draggable="true" class="list">
+                        <label class="container">
+                            <input type="checkbox" name="" class="tick">
+                            <span></span>
+                        </label>
+                        <span>Code over night</span>
+                        <button class="task-del"><img src="images/icon-cross.svg" alt="cancel"></button>
+                    </li>
+                    <li draggable="true" class="list">
+                        <label class="container">
+                            <input type="checkbox" name="" class="tick">
+                            <span></span>
+                        </label>
                         <span>Read for 1 hour</span>
+                        <button class="task-del"><img src="images/icon-cross.svg" alt="cancel"></button>
+                    </li>
+                    <li draggable="true" class="list">
+                        <label class="container">
+                            <input type="checkbox" name="" class="tick">
+                            <span></span>
+                        </label>
+                        <span>Study new concept</span>
                         <button class="task-del"><img src="images/icon-cross.svg" alt="cancel"></button>
                     </li>
                 </ul>
@@ -37,9 +58,10 @@
                     <p></p>
                     <button class="all">All</button>
                     <button class="complete">Completed</button>
-                    <button class="clear">clear Completed</button>
+                    <button class="clear">Clear Completed</button>
                 </div>
             </div>
+            <p class="were">Drag and drop to reorder list</p>
         </main>
     </div>
     <script src="main.js"></script>

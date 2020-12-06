@@ -12,21 +12,25 @@ function addTask(e) {
 
     // Create elements into the DOM
     const li = document.createElement("li");
-    li.id = "list";
-    li.setAttribute("draggable", "true");
+    const container = document.createElement("label");
+    const emptySpan = document.createElement("span");
     const checkbox = document.createElement("INPUT");
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.className = "tick"
     const span = document.createElement("span");
     const button = document.createElement("button");
+
+    // Add properties and content to elements
+    li.className = "list";
+    li.setAttribute("draggable", "true");
+    span.textContent = inputTask.value;
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.className = "tick"
     button.className = "task-del";
     button.innerHTML = "<img src='images/icon-cross.svg' alt='cancel'>";
 
-    // Get user input and set it to the span
-    span.textContent = inputTask.value;
-
-    // Append children to li
-    li.appendChild(checkbox);
+    // Append children to parents
+    container.appendChild(checkbox);
+    container.appendChild(emptySpan);
+    li.appendChild(container);
     li.appendChild(span);
     li.appendChild(button);
 
@@ -42,13 +46,15 @@ function HandleEvents(e) {
         // Put a strike-through if the checkbox is checked to indicate completed.
     } else if (e.target.className == "tick") {
         if (e.target.checked) {
-            const li = e.target.parentElement;
+            const li = e.target.parentElement.parentElement;
             li.style.textDecoration = "line-through";
+            li.style.color = "hsl(235, 19%, 35%)";
             // Remove the delete button if checked
             li.lastElementChild.style.display = "none";
         } else {
-            const li = e.target.parentElement;
+            const li = e.target.parentElement.parentElement;
             li.style.textDecoration = "none";
+            li.style.color = "hsl(233, 11%, 84%)";
             // Restore delete button if unchecked
             li.lastElementChild.style.display = "inline";
         }
@@ -61,22 +67,22 @@ function handleDisplay(e) {
     if (e.target.className == "complete") {
         checkboxes.forEach(box => {
             if (box.checked) {
-                const list = box.parentElement;
-                return list.style.display = "block";
+                const list = box.parentElement.parentElement;
+                return list.style.display = "flex";
             } else if (!box.checked) {
-                const list = box.parentElement;
+                const list = box.parentElement.parentElement;
                 return list.style.display = "none";
             }
         });
     } else if (e.target.className == "all") {
         checkboxes.forEach(box => {
-            const li = box.parentElement;
-            return li.style.display = "block";
+            const li = box.parentElement.parentElement;
+            return li.style.display = "flex";
         });
     } else if (e.target.className == "clear") {
         checkboxes.forEach(box => {
             if (box.checked) {
-                const li = box.parentElement;
+                const li = box.parentElement.parentElement;
                 return ul.removeChild(li);
             }
         });
@@ -86,7 +92,7 @@ function handleDisplay(e) {
 let source;
 // Data to drag 
 function drag(e) {
-    if (e.target.id == "list") {
+    if (e.target.className == "list") {
         source = e.target;
         e.dataTransfer.setData("text", e.target.innerHTML);
         //e.dataTransfer.effectAllowed = "move";
@@ -95,7 +101,7 @@ function drag(e) {
 
 // Allow data/Element to be dropped inside of me.
 function allowDrop(e) {
-    if (e.target.id == "list") {
+    if (e.target.className == "list") {
         // Allow data/element to be dropped on me
         e.preventDefault();
     }
@@ -103,7 +109,7 @@ function allowDrop(e) {
 
 // Drop function 
 function dropData(e) {
-    if (e.target.id == "list") {
+    if (e.target.className == "list") {
         e.preventDefault();
         // Exchange the content of each element
         source.innerHTML = e.target.innerHTML;
