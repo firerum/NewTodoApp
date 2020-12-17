@@ -17,6 +17,12 @@
     --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 }
 
+:root.light-theme {
+    --Very-Dark-Blue:  hsl(236, 33%, 92%);
+    --Very-Dark-Desaturated-Blue: hsl(0, 0%, 98%);
+    --Very-Dark-Grayish-Blue:  hsl(233, 11%, 84%);
+}
+
 *,
 *::before,
 *::after {
@@ -90,16 +96,18 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 main > .wrapper {
+    position: absolute;
+    top: -100px;
     width: 90%;
     max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -150px;
 }
 
 main #todo,
@@ -231,6 +239,8 @@ main .task-info > button:focus {
 }
 
 main > .were {
+    position: absolute;
+    bottom: 0;
     padding: 4em 0;
     font-size: 15px;
 }
