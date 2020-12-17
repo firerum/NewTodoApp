@@ -1,6 +1,7 @@
 const form = document.forms["todo"];
 const ul = document.querySelector("ul");
 const taskInfo = document.querySelector(".task-info");
+const dayggler = document.getElementById("dayggler");
 
 // Add new tasks
 function addTask(e) {
@@ -119,6 +120,11 @@ function dropData(e) {
     }
 }
 
+// Change theme 
+function changeTheme() {
+    document.documentElement.classList.toggle("light-theme");
+}
+
 
 // Add event listeners to buttons
 form.addEventListener("submit", addTask);
@@ -127,3 +133,4 @@ ul.addEventListener("dragover", allowDrop);
 ul.addEventListener("drop", dropData);
 ul.addEventListener("dragstart", drag);
 taskInfo.addEventListener("click", handleDisplay);
+dayggler.addEventListener("click", changeTheme);
